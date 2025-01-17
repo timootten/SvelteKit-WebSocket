@@ -3,7 +3,8 @@
 
 	onMount(() => {
 		console.log('Page');
-		const websocket = new WebSocket('ws://localhost:5173/abc');
+		const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+		const websocket = new WebSocket(`${protocol}//${window.location.host}/websocket`);
 		websocket.addEventListener('open', () => {
 			console.log('Connected to websocket');
 		});
